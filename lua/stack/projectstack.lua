@@ -7,7 +7,6 @@ M._stack = {}
 
 --Read all project stored
 M.init = function ()
-  print("init function")
   local storagePath = "/home/leno/.cache/nvim/projectstack.txt"
   local file = assert(io.open(storagePath,"r"))
   if file then
@@ -16,7 +15,14 @@ M.init = function ()
     end
   end
 end
+--Open choosed project
+M.switchProject = function (index)
+  local path = M._stack[index]
+  M_custom.openNewRoot(path)
+end
 
+
+--GUI FUNCTIONS
 
 --Display all projects
 M.displayProjects = function()
