@@ -7,6 +7,7 @@ M._stack = {}
 
 --Read all project stored
 M.init = function ()
+  print("init function")
   local storagePath = "/home/leno/.cache/nvim/projectstack.txt"
   local file = assert(io.open(storagePath,"r"))
   if file then

@@ -1,5 +1,5 @@
 --require("config.custom-functions")
 require("stack.stack")
-require("stack.projectstack")
+local projectStack = require("stack.projectstack")
 
-
+projectStack.init()
