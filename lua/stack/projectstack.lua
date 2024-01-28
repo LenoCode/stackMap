@@ -45,10 +45,10 @@ local content = {
 -- Create the floating window
 local opts = {
     relative = 'editor',
-    width = 40,
+    width = 20,
     height = 10,
-    col = 0,
-    row = 0,
+    col = col,
+    row = row,
     style = 'minimal',
     border = 'rounded',
 }
