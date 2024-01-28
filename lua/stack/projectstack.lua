@@ -61,7 +61,7 @@ local buttons = {
 }
 
 
-vim.api.nvim_buf_set_keymap("n","<CR>",function ()
+vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",function ()
     local current_line = vim.api.nvim_get_current_line()
     print("Current line : ",current_line)
 
