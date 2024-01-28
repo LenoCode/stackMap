@@ -60,13 +60,19 @@ local buttons = {
     { text = "Button 2", action = function() print("Button 2 clicked!") end },
 }
 
+
+vim.api.nvim_buf_set_keymap("n","<CR>",function ()
+    local current_line = vim.api.nvim_get_current_line()
+    print("Current line : ",current_line)
+
+end,{noremap = true, silent = true})
+
 vim.api.nvim_buf_set_lines(0, 0, -1, false, content)
   -- Set buffer content (buttons)
     for i, button in ipairs(buttons) do
         vim.api.nvim_buf_set_option(bufnr, 'modifiable', true)
         vim.api.nvim_buf_set_lines(bufnr, -1, -1, true, { button.text })
         vim.api.nvim_buf_set_option(bufnr, 'modifiable', false)
-        vim.api.nvim_buf_set_keymap(bufnr,"n","<Cmd>lua <CR>",':lua "print(21321312)"<CR>',{noremap=true,silent=true})
     end
 
 -- Set the content in the floating window
