@@ -62,10 +62,11 @@ local buttons = {
 
 vim.api.nvim_buf_set_lines(0, 0, -1, false, content)
   -- Set buffer content (buttons)
-    for _, button in ipairs(buttons) do
+    for i, button in ipairs(buttons) do
         vim.api.nvim_buf_set_option(bufnr, 'modifiable', true)
         vim.api.nvim_buf_set_lines(bufnr, -1, -1, true, { button.text })
         vim.api.nvim_buf_set_option(bufnr, 'modifiable', false)
+        vim.api.nvim_buf_set_keymap(bufnr, 'n', tostring(i), ':lua ' .. button.action .. '<CR>', {})
     end
 
 -- Set the content in the floating window
