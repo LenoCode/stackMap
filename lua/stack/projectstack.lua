@@ -66,7 +66,7 @@ vim.api.nvim_buf_set_lines(0, 0, -1, false, content)
         vim.api.nvim_buf_set_option(bufnr, 'modifiable', true)
         vim.api.nvim_buf_set_lines(bufnr, -1, -1, true, { button.text })
         vim.api.nvim_buf_set_option(bufnr, 'modifiable', false)
-        vim.api.nvim_buf_set_keymap(bufnr,"n","<Cmd>lua <CR>",':lua '..button.action..'()<CR>',{noremap=true,silent=true})
+        vim.api.nvim_buf_set_keymap(bufnr,"n","<Cmd>lua <CR>",':lua "print(21321312)"<CR>',{noremap=true,silent=true})
     end
 
 -- Set the content in the floating window
