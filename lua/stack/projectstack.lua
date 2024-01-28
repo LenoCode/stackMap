@@ -59,6 +59,8 @@ local buttons = {
     { text = "Button 1", action = function() print("Button 1 clicked!") end },
     { text = "Button 2", action = function() print("Button 2 clicked!") end },
 }
+
+vim.api.nvim_buf_set_lines(0, 0, -1, false, content)
   -- Set buffer content (buttons)
     for _, button in ipairs(buttons) do
         vim.api.nvim_buf_set_option(bufnr, 'modifiable', true)
@@ -67,7 +69,6 @@ local buttons = {
     end
 
 -- Set the content in the floating window
-vim.api.nvim_buf_set_lines(0, 0, -1, false, content)
 
 -- Set keymap to close the floating window on 'q'
 vim.api.nvim_buf_set_keymap(0, 'n', 'q', ':q<CR>', { noremap = true, silent = true })
