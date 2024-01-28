@@ -52,7 +52,7 @@ local opts = {
     style = 'minimal',
     border = 'rounded',
 }
-local bufnr = api.nvim_create_buf(false, true)
+local bufnr = vim.api.nvim_create_buf(false, true)
 local winid = vim.api.nvim_open_win(bufnr,true, opts)
 
 -- Set the content in the floating window
