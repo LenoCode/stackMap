@@ -60,12 +60,13 @@ local buttons = {
     { text = "Button 2", action = function() print("Button 2 clicked!") end },
 }
 
+local testFunction = function ()
+  local current_line = vim.api.nvim_get_current_line()
+  print(current_line)
+end
 
-vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",function ()
-    local current_line = vim.api.nvim_get_current_line()
-    print("Current line : ",current_line)
 
-end,{noremap = true, silent = true})
+vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",":lua testFunction ",{noremap = true, silent = true})
 
 vim.api.nvim_buf_set_lines(0, 0, -1, false, content)
   -- Set buffer content (buttons)
