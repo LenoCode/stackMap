@@ -47,8 +47,8 @@ local opts = {
     relative = 'editor',
     width = 40,
     height = 10,
-    col = col,
-    row = row,
+    col = 0,
+    row = 0,
     style = 'minimal',
     border = 'rounded',
 }
