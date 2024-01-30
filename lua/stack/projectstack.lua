@@ -2,6 +2,7 @@ local M_custom = require("config.custom-functions")
 
 local M = {}
 
+
 --In memory stack for holding projects root
 M._stack = {}
 
@@ -66,7 +67,7 @@ local testFunction = function ()
 end
 
 
-vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",":lua print(vim.api.nvim_get_current_line())<CR> ",{noremap = true, silent = true})
+vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",testFunction,{noremap = true, silent = true})
 
 vim.api.nvim_buf_set_lines(0, 0, -1, false, content)
   -- Set buffer content (buttons)

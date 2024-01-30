@@ -2,7 +2,10 @@
 require("stack.stack")
 local projectStack = require("stack.projectstack")
 
-projectStack.init()
 
+print("jdksadklasjkldjakl")
+
+
+projectStack.init() 
 
 return projectStack
