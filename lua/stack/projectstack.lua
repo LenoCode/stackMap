@@ -67,7 +67,7 @@ local testFunction = function ()
 end
 
 
-vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",testFunction,{noremap = true, silent = true})
+vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>","lua testFunction()",{noremap = true, silent = true})
 
 vim.api.nvim_buf_set_lines(0, 0, -1, false, content)
   -- Set buffer content (buttons)
