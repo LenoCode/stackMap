@@ -26,7 +26,7 @@ end
 function getCurrentLine()
   local window= vim.api.nvim_get_current_win()
   local cursor = vim.api.nvim_win_get_cursor(window)
-  print(cursor)
+  print(cursor[1])
 end
 
 --GUI FUNCTIONS
