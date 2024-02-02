@@ -27,6 +27,7 @@ end
 function getCurrentLine()
   local window= vim.api.nvim_get_current_win()
   local cursor = vim.api.nvim_win_get_cursor(window)
+  print(cursor[1])
   M.switchProject(cursor[1] - 1)
 end
 
@@ -35,8 +36,6 @@ end
 --Display all projects
 M.displayProjects = function()
   -- Calculate the position for the floating window
-    local listOfWindows = vim.api.nvim_list_wins()
-
     local width = vim.fn.winwidth(0)
     local height = vim.fn.winheight(0)
 
