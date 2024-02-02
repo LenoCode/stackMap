@@ -10,6 +10,7 @@ M.init = function ()
   local file = assert(io.open(storagePath,"r"))
   if file then
     for line in file:lines()do
+      print(line)
       table.insert(M._stack,line)
     end
   end
