@@ -52,6 +52,7 @@ M.displayProjects = function()
 
     local testFunction = function ()
       local current_line = vim.api.nvim_get_current_line()
+
       print(current_line)
     end
 
