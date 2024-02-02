@@ -26,7 +26,7 @@ end
 function getCurrentLine()
   local window= vim.api.nvim_get_current_win()
   local cursor = vim.api.nvim_win_get_cursor(window)
-  print(cursor[1])
+  M.switchProject(cursor[1] - 1)
 end
 
 --GUI FUNCTIONS
@@ -55,17 +55,14 @@ M.displayProjects = function()
     }
     local bufnr = vim.api.nvim_create_buf(false, true)
     local winid = vim.api.nvim_open_win(bufnr,true, opts)
-        -- Define button mappings
 
     vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",":lua getCurrentLine() <CR>",{noremap = true, silent = true})
 
-    for _,project in ipairs(M._stack)do
+    for i,project in ipairs(M._stack)do
         vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
-        vim.api.nvim_buf_set_lines(bufnr,-1,-1,true,{"buffer name : "..project})
+        vim.api.nvim_buf_set_lines(bufnr,-1,-1,true,{i.." : "..project})
         vim.api.nvim_buf_set_option(bufnr,'modifiable',false)
     end
-
-    -- Set the content in the floating window
 
     -- Set keymap to close the floating window on 'q'
     vim.api.nvim_buf_set_keymap(0, 'n', 'q', ':q<CR>', { noremap = true, silent = true })
