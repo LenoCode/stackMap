@@ -38,7 +38,7 @@ M.displayProjects = function()
     -- Create the floating window
     local opts = {
         relative = 'editor',
-        width = 40,
+        width = 80,
         height = 20,
         col = col,
         row = row,
