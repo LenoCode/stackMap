@@ -21,7 +21,9 @@ M.switchProject = function (index)
   M_custom.openNewRoot(path)
 end
 
-M.getCurrentLine = function ()
+
+-- Get current line index
+function getCurrentLine()
   local window= vim.api.nvim_get_current_win()
   local cursor = vim.api.nvim_win_get_cursor(window)
   print(cursor)
