@@ -1,8 +1,6 @@
 local M_custom = require("config.custom-functions")
 
 local M = {}
-
-
 --In memory stack for holding projects root
 M._stack = {}
 
@@ -22,66 +20,58 @@ M.switchProject = function (index)
   M_custom.openNewRoot(path)
 end
 
-
 --GUI FUNCTIONS
+
 
 --Display all projects
 M.displayProjects = function()
   -- Calculate the position for the floating window
-local width = vim.fn.winwidth(0)
-local height = vim.fn.winheight(0)
+    local listOfWindows = vim.api.nvim_list_wins()
 
-local col = math.floor((width - 40) / 2)
-local row = math.floor((height - 10) / 2)
+    local width = vim.fn.winwidth(0)
+    local height = vim.fn.winheight(0)
 
--- Create the contents for the floating window
-local content = {
-    "This is a small floating window",
-    "Press 'q' to close",
-    "Line 1",
-    "Line 2",
-    "Line 3",
-}
-
--- Create the floating window
-local opts = {
-    relative = 'editor',
-    width = 20,
-    height = 10,
-    col = col,
-    row = row,
-    style = 'minimal',
-    border = 'rounded',
-}
-local bufnr = vim.api.nvim_create_buf(false, true)
-local winid = vim.api.nvim_open_win(bufnr,true, opts)
-    -- Define button mappings
-local buttons = {
-    { text = "Button 1", action = function() print("Button 1 clicked!") end },
-    { text = "Button 2", action = function() print("Button 2 clicked!") end },
-}
-
-local testFunction = function ()
-  local current_line = vim.api.nvim_get_current_line()
-  print(current_line)
-end
+    local col = math.floor((width - 40) / 2)
+    local row = math.floor((height - 10) / 2)
 
 
-vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>","lua testFunction()",{noremap = true, silent = true})
+    -- Create the floating window
+    local opts = {
+        relative = 'editor',
+        width = 20,
+        height = 10,
+        col = col,
+        row = row,
+        style = 'minimal',
+        border = 'rounded',
+    }
+    local bufnr = vim.api.nvim_create_buf(false, true)
+    local winid = vim.api.nvim_open_win(bufnr,true, opts)
+        -- Define button mappings
 
-vim.api.nvim_buf_set_lines(0, 0, -1, false, content)
-  -- Set buffer content (buttons)
-    for i, button in ipairs(buttons) do
-        vim.api.nvim_buf_set_option(bufnr, 'modifiable', true)
-        vim.api.nvim_buf_set_lines(bufnr, -1, -1, true, { button.text })
-        vim.api.nvim_buf_set_option(bufnr, 'modifiable', false)
+
+    local testFunction = function ()
+      local current_line = vim.api.nvim_get_current_line()
+      print(current_line)
     end
 
--- Set the content in the floating window
 
--- Set keymap to close the floating window on 'q'
-vim.api.nvim_buf_set_keymap(0, 'n', 'q', ':q<CR>', { noremap = true, silent = true })
+    vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>","lua testFunction()",{noremap = true, silent = true})
 
-end
+    for _, win in ipairs(listOfWindows)do
+        local buffer= vim.api.nvim_win_get_buf(win)
+        local bufname = vim.api.nvim_buf_get_name(buffer)
+
+        vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
+        vim.api.nvim_buf_set_lines(bufnr,-1,-1,true,{bufname})
+        vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
+    end
+
+    -- Set the content in the floating window
+
+    -- Set keymap to close the floating window on 'q'
+    vim.api.nvim_buf_set_keymap(0, 'n', 'q', ':q<CR>', { noremap = true, silent = true })
+
+  end
 
 return M
