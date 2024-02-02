@@ -14,19 +14,20 @@ M.init = function ()
     end
   end
 end
+
 --Open choosed project
 M.switchProject = function (index)
   local path = M._stack[index]
   M_custom.openNewRoot(path)
 end
 
+M.getCurrentLine = function ()
+  local window= vim.api.nvim_get_current_win()
+  local cursor = vim.api.nvim_win_get_cursor(window)
+  print(cursor)
+end
 
 --GUI FUNCTIONS
-
- function getCurrentLine()
-  local current_line = vim.api.nvim_get_current_line()
-  print(current_line)
-end
 
 --Display all projects
 M.displayProjects = function()
@@ -54,14 +55,11 @@ M.displayProjects = function()
     local winid = vim.api.nvim_open_win(bufnr,true, opts)
         -- Define button mappings
 
-    vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",":lua getCurrentLine()",{noremap = true, silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",":lua M.getCurrentLine() <CR>",{noremap = true, silent = true})
 
-    for _, win in ipairs(listOfWindows)do
-        local buffer= vim.api.nvim_win_get_buf(win)
-        local bufname = vim.api.nvim_buf_get_name(buffer)
-
+    for _,project in ipairs(M._stack)do
         vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
-        vim.api.nvim_buf_set_lines(bufnr,-1,-1,true,{"buffer name : "..bufname})
+        vim.api.nvim_buf_set_lines(bufnr,-1,-1,true,{"buffer name : "..project})
         vim.api.nvim_buf_set_option(bufnr,'modifiable',false)
     end
 
