@@ -23,6 +23,14 @@ end
 --GUI FUNCTIONS
 
 
+
+
+local function testFunction()
+  local current_line = vim.api.nvim_get_current_line()
+  print(current_line)
+end
+
+
 --Display all projects
 M.displayProjects = function()
   -- Calculate the position for the floating window
@@ -48,14 +56,6 @@ M.displayProjects = function()
     local bufnr = vim.api.nvim_create_buf(false, true)
     local winid = vim.api.nvim_open_win(bufnr,true, opts)
         -- Define button mappings
-
-
-    local testFunction = function ()
-      local current_line = vim.api.nvim_get_current_line()
-
-      print(current_line)
-    end
-
 
     vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",":lua testFunction()<CR>",{noremap = true, silent = true})
 
