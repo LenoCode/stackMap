@@ -63,8 +63,8 @@ M.displayProjects = function()
         local bufname = vim.api.nvim_buf_get_name(buffer)
 
         vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
-        vim.api.nvim_buf_set_lines(bufnr,-1,-1,true,{bufname})
-        vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
+        vim.api.nvim_buf_set_lines(bufnr,-1,-1,true,{"buffer name : "..bufname})
+        vim.api.nvim_buf_set_option(bufnr,'modifiable',false)
     end
 
     -- Set the content in the floating window
