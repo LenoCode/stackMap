@@ -18,6 +18,8 @@ end
 
 --Open choosed project
 M.switchProject = function (index)
+  local inspect = require('vim.inspect')
+  print(inspect(M._stack))
   local path = M._stack[index]
   M_custom.openNewRoot(path)
 end
