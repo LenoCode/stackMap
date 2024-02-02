@@ -23,7 +23,10 @@ end
 
 --GUI FUNCTIONS
 
-
+local function getCurrentLine()
+  local current_line = nvim.api.get_current_line()
+  print(current_line)
+end
 
 --Display all projects
 M.displayProjects = function()
@@ -51,11 +54,7 @@ M.displayProjects = function()
     local winid = vim.api.nvim_open_win(bufnr,true, opts)
         -- Define button mappings
 
-    vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",function ()
-      local current_line = vim.api.nvim_get_current_line()
-      print(current_line)
-    end,
-    {noremap = true, silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",":lua getCurrentLine()",{noremap = true, silent = true})
 
     for _, win in ipairs(listOfWindows)do
         local buffer= vim.api.nvim_win_get_buf(win)
