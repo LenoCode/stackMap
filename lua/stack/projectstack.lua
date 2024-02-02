@@ -57,7 +57,7 @@ M.displayProjects = function()
     local winid = vim.api.nvim_open_win(bufnr,true, opts)
         -- Define button mappings
 
-    vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",":lua M.getCurrentLine() <CR>",{noremap = true, silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",":lua getCurrentLine() <CR>",{noremap = true, silent = true})
 
     for _,project in ipairs(M._stack)do
         vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
