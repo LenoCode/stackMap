@@ -32,14 +32,14 @@ M.displayProjects = function()
     local height = vim.fn.winheight(0)
 
     local col = math.floor((width - 40) / 2)
-    local row = math.floor((height - 10) / 2)
+    local row = math.floor((height - 20) / 2)
 
 
     -- Create the floating window
     local opts = {
         relative = 'editor',
-        width = 20,
-        height = 10,
+        width = 40,
+        height = 20,
         col = col,
         row = row,
         style = 'minimal',
@@ -56,7 +56,7 @@ M.displayProjects = function()
     end
 
 
-    vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>","lua testFunction()",{noremap = true, silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",":lua testFunction()",{noremap = true, silent = true})
 
     for _, win in ipairs(listOfWindows)do
         local buffer= vim.api.nvim_win_get_buf(win)
