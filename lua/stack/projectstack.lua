@@ -57,7 +57,7 @@ M.displayProjects = function()
     end
 
 
-    vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",":lua testFunction",{noremap = true, silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",":lua testFunction()<CR>",{noremap = true, silent = true})
 
     for _, win in ipairs(listOfWindows)do
         local buffer= vim.api.nvim_win_get_buf(win)
