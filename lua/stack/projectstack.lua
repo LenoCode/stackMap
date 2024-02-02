@@ -24,7 +24,7 @@ end
 --GUI FUNCTIONS
 
  function getCurrentLine()
-  local current_line = nvim.api.get_current_line()
+  local current_line = vim.api.get_current_line()
   print(current_line)
 end
 
