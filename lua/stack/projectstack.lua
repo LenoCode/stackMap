@@ -85,13 +85,12 @@ M.displayProjects = function()
     -- Get the width and height of the window
     local w = vim.api.nvim_win_get_width(winid)
     local h = vim.api.nvim_win_get_height(winid)
-    print(w)
-    print(h)
+
     -- Open a new window using the sub buffer, within the main window
     local sub_win = vim.api.nvim_open_win(sub_buf, true, {
         relative = 'win',
-        row = w,
-        col = h,
+        row = row + (w / 2),
+        col = col + (h / 2),
         width = 20,
         height = 3,
         style = 'minimal',
