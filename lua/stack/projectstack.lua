@@ -42,7 +42,6 @@ M.displayProjects = function()
     local col = math.floor((width - 40) / 2)
     local row = math.floor((height - 20) / 2)
 
-
     -- Create the floating window
     local opts = {
         relative = 'editor',
@@ -60,7 +59,7 @@ M.displayProjects = function()
     --Adding lines to display
 
     -- Define a custom highlight group with a specific color
-    local highlight_group = "DiffAdd"
+    local highlight_group = "@string"
     vim.api.nvim_buf_set_lines(bufnr,0,0,false,{string.rep(" ",4).."Projects path : "})
 
     vim.api.nvim_buf_add_highlight(bufnr, -1, highlight_group, 0, 0, -1)
