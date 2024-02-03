@@ -75,20 +75,25 @@ M.displayProjects = function()
     -- Set keymap to close the floating window on 'q'
     vim.api.nvim_buf_set_keymap(0, 'n', 'q', ':q<CR>', { noremap = true, silent = true })
 
+
+
+
     local sub_buf = vim.api.nvim_create_buf(false, true)
 
     -- Set some text in the sub buffer
     vim.api.nvim_buf_set_lines(sub_buf, 0, -1, false, {"Sub buffer content"})
-
+    -- Get the width and height of the window
+    local w = vim.api.nvim_win_get_width(winid)
+    local h = vim.api.nvim_win_get_height(winid)
     -- Open a new window using the sub buffer, within the main window
     local sub_win = vim.api.nvim_open_win(sub_buf, true, {
-        relative = 'editor',
-        row = 1,
-        col = 1,
+        relative = 'win',
+        row = w / 2,
+        col = h / 2,
         width = 20,
         height = 3,
         style = 'minimal',
-        border = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+        border = "rounded"
     })
     
 
