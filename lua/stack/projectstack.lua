@@ -84,8 +84,8 @@ M.displayProjects = function()
     -- Open a new window using the sub buffer, within the main window
     local sub_win = vim.api.nvim_open_win(sub_buf, true, {
         relative = 'win',
-        row = 15,
-        col = 1,
+        row = 10,
+        col = 2,
         width = 20,
         height = 3,
         style = 'minimal',
