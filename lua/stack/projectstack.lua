@@ -39,8 +39,8 @@ end
 --Display all projects
 M.displayProjects = function()
   -- Calculate the position for the floating window
-    local width = vim.fn.winwidth(0)
-    local height = vim.fn.winheight(0)
+    local width = vim.api.nvim_get_option("columns")
+    local height = vim.api.nvim_get_option("lines")
 
     local col = math.floor((width - 40) / 2)
     local row = math.floor((height - 20) / 2)
