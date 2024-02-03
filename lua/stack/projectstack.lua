@@ -60,10 +60,9 @@ M.displayProjects = function()
     --Adding lines to display
 
     -- Define a custom highlight group with a specific color
-    vim.cmd("highlight MyCustomHighlightGroup guifg=#FF0000")
     local highlight_group = "MyCustomHighlightGroup"
     vim.api.nvim_buf_add_highlight(bufnr, -1, highlight_group, 0, 0, -1)
-    vim.api.nvim_buf_set_lines(bufnr,0,0,true,{string.rep(" ",4).."Projects path : "})
+    vim.api.nvim_buf_set_lines(bufnr,0,0,false,{string.rep(" ",4).."Projects path : "})
 
 
     for i,project in ipairs(M._stack)do
