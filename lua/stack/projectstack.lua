@@ -24,11 +24,9 @@ end
 
 
 -- Get current line index
-function getCurrentLine()
+function getCurrentLine(index)
   local window= vim.api.nvim_get_current_win()
   local current_buf = vim.api.nvim_win_get_buf(window)
-  local cursor = vim.api.nvim_win_get_cursor(window)
-  local index = cursor[1] - 2
   vim.api.nvim_win_close(window,true)
   vim.api.nvim_buf_delete(current_buf,{force = true})
   M.switchProject(index)
@@ -59,14 +57,13 @@ M.displayProjects = function()
     local bufnr = vim.api.nvim_create_buf(false, true)
     local winid = vim.api.nvim_open_win(bufnr,true, opts)
 
-    vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",":lua getCurrentLine() <CR>",{noremap = true, silent = true})
-
-
+    --Adding Header
     --Adding lines to display
-    --Adding Header 
     vim.api.nvim_buf_set_lines(bufnr,0,0,true,{string.rep(" ",4).."Projects path : "})
     for i,project in ipairs(M._stack)do
+        local chooseProjectFunction = ":lua getCurrentLine("..i..") <CR>"
         vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
+        vim.api.nvim_buf_set_keymap(bufnr,"n",tostring(i),chooseProjectFunction,{noremap = true, silent = true})
         vim.api.nvim_buf_set_lines(bufnr,-1,-1,true,{i.." : "..project})
         vim.api.nvim_buf_set_option(bufnr,'modifiable',false)
     end
