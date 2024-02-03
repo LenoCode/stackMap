@@ -28,10 +28,10 @@ function getCurrentLine()
   local window= vim.api.nvim_get_current_win()
   local current_buf = vim.api.nvim_win_get_buf(window)
   local cursor = vim.api.nvim_win_get_cursor(window)
-  local index = curosr[1] - 1
+  local index = cursor[1] - 1
   vim.api.nvim_win_close(window,true)
   vim.api.nvim_buf_delete(current_buf,{force = true})
-  M.switchProject(cursor[1] - 1)
+  M.switchProject(index)
 end
 
 --GUI FUNCTIONS
