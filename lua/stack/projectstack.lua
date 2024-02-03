@@ -18,8 +18,6 @@ end
 
 --Open choosed project
 M.switchProject = function (index)
-  local inspect = require('vim.inspect')
-  print(inspect(M._stack))
   local path = M._stack[index]
   M_custom.openNewRoot(path)
 end
@@ -28,8 +26,11 @@ end
 -- Get current line index
 function getCurrentLine()
   local window= vim.api.nvim_get_current_win()
+  local current_buf = vim.api.nvim_win_get_buf(window)
   local cursor = vim.api.nvim_win_get_cursor(window)
-  print(cursor[1])
+  local index = curosr[1] - 1
+  vim.api.nvim_win_close(window,true)
+  vim.api.nvim_buf_delete(current_buf,{force = true})
   M.switchProject(cursor[1] - 1)
 end
 
