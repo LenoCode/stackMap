@@ -61,6 +61,10 @@ M.displayProjects = function()
 
     vim.api.nvim_buf_set_keymap(bufnr,"n","<CR>",":lua getCurrentLine() <CR>",{noremap = true, silent = true})
 
+
+    --Adding lines to display
+    --Adding Header 
+    vim.api.nvim_buf_set_lines(bufnr,-1,-1,(string.rep(" ",4).."Projects path : "))
     for i,project in ipairs(M._stack)do
         vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
         vim.api.nvim_buf_set_lines(bufnr,-1,-1,true,{i.." : "..project})
