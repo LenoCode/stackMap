@@ -60,7 +60,7 @@ M.displayProjects = function()
 
     -- Define a custom highlight group with a specific color
     local highlight_group = "@string"
-    vim.api.nvim_buf_set_lines(bufnr,0,0,false,{string.rep(" ",4).."Projects path : "})
+    vim.api.nvim_buf_set_lines(bufnr,0,0,false,{string.rep(" ",6).."Projects"})
 
     vim.api.nvim_buf_add_highlight(bufnr, -1, highlight_group, 0, 0, -1)
 
@@ -74,6 +74,24 @@ M.displayProjects = function()
 
     -- Set keymap to close the floating window on 'q'
     vim.api.nvim_buf_set_keymap(0, 'n', 'q', ':q<CR>', { noremap = true, silent = true })
+
+    local sub_buf = vim.api.nvim_create_buf(false, true)
+
+    -- Set some text in the sub buffer
+    vim.api.nvim_buf_set_lines(sub_buf, 0, -1, false, {"Sub buffer content"})
+
+    -- Open a new window using the sub buffer, within the main window
+    local sub_win = vim.api.nvim_open_win(sub_buf, true, {
+        relative = 'win',
+        row = 1,
+        col = 1,
+        width = 20,
+        height = 3,
+        style = 'minimal',
+        border = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+    })
+    
+
 
   end
 
