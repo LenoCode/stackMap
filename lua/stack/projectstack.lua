@@ -61,9 +61,9 @@ M.displayProjects = function()
 
     -- Define a custom highlight group with a specific color
     local highlight_group = "DiffAdd"
-    vim.api.nvim_buf_add_highlight(bufnr, -1, highlight_group, 0, 0, -1)
     vim.api.nvim_buf_set_lines(bufnr,0,0,false,{string.rep(" ",4).."Projects path : "})
 
+    vim.api.nvim_buf_add_highlight(bufnr, -1, highlight_group, 0, 0, -1)
 
     for i,project in ipairs(M._stack)do
         local chooseProjectFunction = ":lua getCurrentLine("..i..") <CR>"
