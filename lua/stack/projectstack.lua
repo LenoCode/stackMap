@@ -10,7 +10,6 @@ M.init = function ()
   local file = assert(io.open(storagePath,"r"))
   if file then
     for line in file:lines()do
-      print(line)
       table.insert(M._stack,line)
     end
   end
@@ -59,7 +58,14 @@ M.displayProjects = function()
 
     --Adding Header
     --Adding lines to display
+
+    -- Define a custom highlight group with a specific color
+    vim.cmd("highlight MyCustomHighlightGroup guifg=#FF0000")
+    local highlight_group = "MyCustomHighlightGroup"
+    vim.api.nvim_buf_add_highlight(bufnr, -1, highlight_group, 0, 0, -1)
     vim.api.nvim_buf_set_lines(bufnr,0,0,true,{string.rep(" ",4).."Projects path : "})
+
+
     for i,project in ipairs(M._stack)do
         local chooseProjectFunction = ":lua getCurrentLine("..i..") <CR>"
         vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
