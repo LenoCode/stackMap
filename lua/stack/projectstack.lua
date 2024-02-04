@@ -88,6 +88,7 @@ M.displayProjects = function()
         width = 40,
         height = 1,
         style = 'minimal',
+        wrap = false,
         border = "rounded"
     })
   end
