@@ -41,7 +41,8 @@ M.displayProjects = function()
 
     local col = math.floor((width - 40) / 2)
     local row = math.floor((height - 20) / 2)
-
+    print(col)
+    print(row)
     -- Create the floating window
     local opts = {
         relative = 'editor',
