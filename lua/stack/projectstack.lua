@@ -41,8 +41,6 @@ M.displayProjects = function()
 
     local col = math.floor((width - 40) / 2)
     local row = math.floor((height - 20) / 2)
-    print(col)
-    print(row)
     -- Create the floating window
     local opts = {
         relative = 'editor',
@@ -86,7 +84,7 @@ M.displayProjects = function()
     local sub_win = vim.api.nvim_open_win(sub_buf, true, {
         relative = 'win',
         row = 10,
-        col = 85,
+        col = 4,
         width = 20,
         height = 3,
         style = 'minimal',
