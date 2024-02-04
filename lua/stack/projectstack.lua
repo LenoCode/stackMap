@@ -90,7 +90,6 @@ M.displayProjects = function()
         style = 'minimal',
         border = "rounded"
     })
-
   end
 
 return M
