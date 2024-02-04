@@ -59,7 +59,7 @@ M.displayProjects = function()
 
     -- Define a custom highlight group with a specific color
     local highlight_group = "@string"
-    vim.api.nvim_buf_set_lines(bufnr,0,0,false,{string.rep(" ",6).."Projects"})
+    vim.api.nvim_buf_set_lines(bufnr,0,0,false,{string.rep(" ",8).."Projects"})
 
     vim.api.nvim_buf_add_highlight(bufnr, -1, highlight_group, 0, 0, -1)
 
