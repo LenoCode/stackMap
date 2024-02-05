@@ -87,7 +87,6 @@ M.displayProjects = function()
     vim.api.nvim_buf_set_keymap(0, 'n', 'q', ':q<CR>', { noremap = true, silent = true })
 
     local sub_buf = vim.api.nvim_create_buf(false, true)
-
     -- Set some text in the sub buffer
 
     -- Get the width and height of the window
@@ -102,6 +101,7 @@ M.displayProjects = function()
         style = 'minimal',
         border = "rounded"
     })
+    vim.api.nvim_command('startinsert!')
   end
 
 return M
