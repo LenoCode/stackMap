@@ -18,7 +18,6 @@ end
 
 -- opening a new root in NvimTreeView
 M.openNewRoot = function (path)
-    print("Opening new path"..path)
     local api = require("nvim-tree.api")
     api.tree.close()
     api.tree.toggle({
