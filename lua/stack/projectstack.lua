@@ -1,8 +1,8 @@
-local M_custom = require("config.custom-functions")
 
 local M = {}
 --In memory stack for holding projects root
 M._stack = {}
+
 
 --Read all project stored
 M.init = function ()
@@ -15,10 +15,23 @@ M.init = function ()
   end
 end
 
+
+-- opening a new root in NvimTreeView
+M.openNewRoot = function (path)
+    print("Opening new path"..path)
+    local api = require("nvim-tree.api")
+    api.tree.close()
+    api.tree.toggle({
+      path=path,
+      find_file = true,
+    })
+  end
+
+
 --Open choosed project
 M.switchProject = function (index)
   local path = M._stack[index]
-  M_custom.openNewRoot(path)
+  M.openNewRoot(path)
 end
 
 
