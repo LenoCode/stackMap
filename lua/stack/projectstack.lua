@@ -71,7 +71,7 @@ M.displayProjects = function()
 
     -- Define a custom highlight group with a specific color
     local highlight_group = "@string"
-    vim.api.nvim_buf_set_lines(bufnr,0,0,false,{string.rep(" ",8).."Projects"})
+    vim.api.nvim_buf_set_lines(bufnr,0,0,false,{string.rep(" ",10).."Projects"})
 
     vim.api.nvim_buf_add_highlight(bufnr, -1, highlight_group, 0, 0, -1)
 
@@ -90,7 +90,6 @@ M.displayProjects = function()
     -- Set some text in the sub buffer
 
     -- Get the width and height of the window
-    
     -- Open a new window using the sub buffer, within the main window
     local sub_win = vim.api.nvim_open_win(sub_buf, true, {
         relative = 'win',
@@ -101,7 +100,9 @@ M.displayProjects = function()
         style = 'minimal',
         border = "rounded"
     })
-    vim.api.nvim_command('startinsert!')
+    vim.api.nvim_win_set_height(0,1)
+    vim.api.nvim_set_option(0,'scrollbind',false)
+
   end
 
 return M
