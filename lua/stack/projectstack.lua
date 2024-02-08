@@ -96,10 +96,14 @@ M.displayProjects = function()
         row = 20,
         col = 2,
         width = 25,
-        height = 0,
+        height = 1,
         style = 'minimal',
         border = "rounded"
     })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<Up>', '', {})
+    vim.api.nvim_buf_set_keymap(0, 'n', '<Down>', '', {})
+    vim.api.nvim_buf_set_keymap(0, 'n', '<Left>', '', {})
+    vim.api.nvim_buf_set_keymap(0, 'n', '<Right>', '', {})
 
   end
 
