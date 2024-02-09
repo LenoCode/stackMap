@@ -122,7 +122,7 @@ M.displayProjects = function()
   local function on_win_closed()
     print("window closed")
   end
-    vim.cmd([[autocmd WinLeave,FloatLeave * lua on_win_closed()]])
+    vim.cmd([[autocmd WinEnter * lua on_win_closed()]])
   end
 
 return M
