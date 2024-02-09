@@ -43,7 +43,8 @@ function getCurrentLine(index)
   M.switchProject(index)
 end
 
-function onPressedEnterEvent()
+function onPressedEnterEvent(buf)
+  local lines = vim.api.nvim_buf_get_lines(buf,0,0,true)
   print(lines)
 end
 
