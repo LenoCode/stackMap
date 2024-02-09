@@ -107,15 +107,15 @@ M.displayProjects = function()
         style = 'minimal',
         border = "rounded"
     })
-    vim.api.nvim_buf_set_keymap(0, 'n', '<Up>', '', {})
-    vim.api.nvim_buf_set_keymap(0, 'n', '<Down>', '', {})
-    vim.api.nvim_buf_set_keymap(0, 'n', '<Left>', '', {})
-    vim.api.nvim_buf_set_keymap(0, 'n', '<Right>', '', {})
+    vim.api.nvim_buf_set_keymap(sub_buf, 'n', '<Up>', '', {})
+    vim.api.nvim_buf_set_keymap(sub_buf, 'n', '<Down>', '', {})
+    vim.api.nvim_buf_set_keymap(sub_buf, 'n', '<Left>', '', {})
+    vim.api.nvim_buf_set_keymap(sub_buf, 'n', '<Right>', '', {})
 
-    vim.api.nvim_buf_set_keymap(0, 'i', '<Up>', '', {})
-    vim.api.nvim_buf_set_keymap(0, 'i', '<Down>', '', {})
-    vim.api.nvim_buf_set_keymap(0, 'i', '<Left>', '', {})
-    vim.api.nvim_buf_set_keymap(0, 'i', '<Right>', '', {})
+    vim.api.nvim_buf_set_keymap(sub_buf, 'i', '<Up>', '', {})
+    vim.api.nvim_buf_set_keymap(sub_buf, 'i', '<Down>', '', {})
+    vim.api.nvim_buf_set_keymap(sub_buf, 'i', '<Left>', '', {})
+    vim.api.nvim_buf_set_keymap(sub_buf, 'i', '<Right>', '', {})
     
 
     local onPressEnterFunction = ":lua onPressedEnterEvent("..sub_buf..")<CR>"
