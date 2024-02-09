@@ -118,6 +118,12 @@ M.displayProjects = function()
     local onPressEnterFunction = ":lua onPressedEnterEvent("..sub_buf..")<CR>"
     vim.api.nvim_buf_set_keymap(sub_buf,"n","<CR>",onPressEnterFunction,{noremap=true,silent=true})
     vim.api.nvim_buf_del_keymap(sub_buf,"i","<CR>")
+    
+  local function on_win_closed()
+    print("window closed")
+  end
+
+    vim.cmd([[autocmd WinClosed * lua on_win_closed()]])
   end
 
 return M
