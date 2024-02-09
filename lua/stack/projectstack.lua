@@ -43,6 +43,11 @@ function getCurrentLine(index)
   M.switchProject(index)
 end
 
+function onPressedEnterEvent(input_buffer)
+  local lines =  vim.api.nvim_buf_get_lines(input_buffer,0,1,true);
+  print(lines)
+end
+
 --GUI FUNCTIONS
 
 --Display all projects
@@ -100,11 +105,17 @@ M.displayProjects = function()
         style = 'minimal',
         border = "rounded"
     })
-      vim.api.nvim_buf_set_keymap(0, 'n', '<Up>', '', {})
+    vim.api.nvim_buf_set_keymap(0, 'n', '<Up>', '', {})
     vim.api.nvim_buf_set_keymap(0, 'n', '<Down>', '', {})
     vim.api.nvim_buf_set_keymap(0, 'n', '<Left>', '', {})
     vim.api.nvim_buf_set_keymap(0, 'n', '<Right>', '', {})
 
+    vim.api.nvim_buf_set_keymap(0, 'i', '<Up>', '', {})
+    vim.api.nvim_buf_set_keymap(0, 'i', '<Down>', '', {})
+    vim.api.nvim_buf_set_keymap(0, 'i', '<Left>', '', {})
+    vim.api.nvim_buf_set_keymap(0, 'i', '<Right>', '', {})
+    
+    vim.api.nvim_buf_set_keymap(sub_buf,"n","<CR>","onPressedEnterEvent("..sub_buf..")",{noremap=true,silent=true})
   end
 
 return M
