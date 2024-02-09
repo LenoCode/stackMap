@@ -114,7 +114,7 @@ M.displayProjects = function()
     vim.api.nvim_buf_set_keymap(0, 'i', '<Left>', '', {})
     vim.api.nvim_buf_set_keymap(0, 'i', '<Right>', '', {})
     
-    vim.api.nvim_buf_set_keymap(sub_buf,"n","<CR>","onPressedEnterEvent("..sub_buf..")",{noremap=true,silent=true})
+    vim.api.nvim_buf_set_keymap(sub_buf,"n","<CR>",onPressedEnterEvent,{noremap=true,silent=true})
   end
 
 return M
