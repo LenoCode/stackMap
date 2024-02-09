@@ -122,7 +122,11 @@ M.displayProjects = function()
   local function on_win_closed()
     print("window closed")
   end
-    vim.cmd([[autocmd WinEnter,BufEnter * lua print('heeey')]])
+
+  vim.api.nvim_create_autocmd("BufEnter",{callback=function ()
+    print("BufEnter")
+  end})
+
   end
 
 return M
