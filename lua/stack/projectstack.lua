@@ -45,7 +45,9 @@ end
 
 function onPressedEnterEvent(buf)
   local lines = vim.api.nvim_buf_get_lines(buf,0,0,true)
-  print(lines)
+  local line = lines[0]
+  local line1= lines[1]
+  print(lines[1])
 end
 
 --GUI FUNCTIONS
