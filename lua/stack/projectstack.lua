@@ -117,8 +117,6 @@ M.displayProjects = function()
 
     local onPressEnterFunction = ":lua onPressedEnterEvent("..sub_buf..")<CR>"
     vim.api.nvim_buf_set_keymap(sub_buf,"n","<CR>",onPressEnterFunction,{noremap=true,silent=true})
-    vim.api.nvim_buf_del_keymap(sub_buf,"i","<CR>")
-
 
     vim.api.nvim_create_autocmd("BufEnter",{callback = function ()
       print("Hey man")
