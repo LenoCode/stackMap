@@ -47,8 +47,8 @@ function onPressedEnterEvent(win,sub_win,buf)
   local lines = vim.api.nvim_buf_get_lines(buf,0,1,false)
   local line = lines[0]
   local line1= lines[1]
-  vim.api.nvim_win_close(win)
-  vim.api.nvim_win_close(sub_win)
+  vim.api.nvim_win_close(win,true)
+  vim.api.nvim_win_close(sub_win,true)
 end
 
 --GUI FUNCTIONS
@@ -114,10 +114,9 @@ M.displayProjects = function()
 
     vim.api.nvim_buf_set_keymap(sub_buf, 'i', '<Up>', '', {})
     vim.api.nvim_buf_set_keymap(sub_buf, 'i', '<Down>', '', {})
-    
 
     local onPressEnterFunction = ":lua onPressedEnterEvent("..winid..","..sub_win..","..sub_buf..")<CR>"
-    vim.api.nvim_buf_set_keymap(sub_buf,"n","<CR>",onPressEnterFunction,{noremap=true,silent=true})
+    vim.api.nvim_buf_set_keymap(sub_buf,"i","<CR>",onPressEnterFunction,{noremap=true,silent=true})
   end
 
 return M
