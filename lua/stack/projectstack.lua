@@ -115,7 +115,7 @@ M.displayProjects = function()
     vim.api.nvim_buf_set_keymap(sub_buf, 'i', '<Up>', '', {})
     vim.api.nvim_buf_set_keymap(sub_buf, 'i', '<Down>', '', {})
 
-    local onPressEnterFunction = "<cmd>lua onPressedEnterEvent("..winid..","..sub_win..","..sub_buf..")<CR>"
+    local onPressEnterFunction = "<Cmd>lua onPressedEnterEvent("..winid..","..sub_win..","..sub_buf..")<CR>"
     vim.api.nvim_buf_set_keymap(sub_buf,"i","<CR>",onPressEnterFunction,{noremap=true,silent=true})
   end
 
