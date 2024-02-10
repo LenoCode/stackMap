@@ -35,7 +35,7 @@ end
 
 
 -- Get current line index
-function getCurrentLine(index)
+function getCucrrentLine(index)
   local window= vim.api.nvim_get_current_win()
   local current_buf = vim.api.nvim_win_get_buf(window)
   vim.api.nvim_win_close(window,true)
@@ -45,10 +45,10 @@ end
 
 function onPressedEnterEvent(win,sub_win,buf)
   local lines = vim.api.nvim_buf_get_lines(buf,0,1,false)
-  local line = lines[0]
-  local line1= lines[1]
+  local line= lines[1]
   vim.api.nvim_win_close(win,true)
   vim.api.nvim_win_close(sub_win,true)
+  M.switchProject(line)
 end
 
 --GUI FUNCTIONS
@@ -86,7 +86,7 @@ M.displayProjects = function()
     for i,project in ipairs(M._stack)do
         local chooseProjectFunction = ":lua getCurrentLine("..i..") <CR>"
         vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
-        vim.api.nvim_buf_set_keymap(bufnr,"n",tostring(i),chooseProjectFunction,{noremap = true, silent = true})
+        --vim.api.nvim_buf_set_keymap(bufnr,"n",tostring(i),chooseProjectFunction,{noremap = true, silent = true})
         vim.api.nvim_buf_set_lines(bufnr,-1,-1,true,{i.." : "..project})
         vim.api.nvim_buf_set_option(bufnr,'modifiable',false)
     end
