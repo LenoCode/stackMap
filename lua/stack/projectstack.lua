@@ -30,8 +30,6 @@ M.openNewRoot = function (path)
 --Open choosed project
 M.switchProject = function (index)
   local path = M._stack[index]
-  local test = M._stack[1]
-  print("changing path"..path)
   M.openNewRoot(path)
 end
 
@@ -50,7 +48,7 @@ function onPressedEnterEvent(win,sub_win,buf)
   local line= lines[1]
   vim.api.nvim_win_close(win,true)
   vim.api.nvim_win_close(sub_win,true)
-  M.switchProject(line)
+  M.switchProject(tonumber(line))
 end
 
 --GUI FUNCTIONS
