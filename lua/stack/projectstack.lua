@@ -30,6 +30,7 @@ M.openNewRoot = function (path)
 --Open choosed project
 M.switchProject = function (index)
   local path = M._stack[index]
+  local test = M._stack[1]
   print("changing path"..path)
   M.openNewRoot(path)
 end
