@@ -46,7 +46,6 @@ end
 function onPressedEnterEvent(win,sub_win,buf)
   local lines = vim.api.nvim_buf_get_lines(buf,0,1,false)
   local line= lines[1]
-  vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
   vim.api.nvim_win_close(win,true)
   vim.api.nvim_win_close(sub_win,true)
   M.switchProject(tonumber(line))
