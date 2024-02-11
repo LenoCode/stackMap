@@ -46,6 +46,7 @@ end
 function onPressedEnterEvent(win,sub_win,buf)
   local lines = vim.api.nvim_buf_get_lines(buf,0,1,false)
   local line= lines[1]
+  vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
   vim.api.nvim_win_close(win,true)
   vim.api.nvim_win_close(sub_win,true)
   M.switchProject(tonumber(line))
@@ -84,7 +85,7 @@ M.displayProjects = function()
     vim.api.nvim_buf_add_highlight(bufnr, -1, highlight_group, 0, 0, -1)
 
     for i,project in ipairs(M._stack)do
-        local chooseProjectFunction = ":lua getCurrentLine("..i..") <CR>"
+        --local chooseProjectFunction = ":lua getCurrentLine("..i..") <CR>"
         vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
         --vim.api.nvim_buf_set_keymap(bufnr,"n",tostring(i),chooseProjectFunction,{noremap = true, silent = true})
         vim.api.nvim_buf_set_lines(bufnr,-1,-1,true,{i.." : "..project})
