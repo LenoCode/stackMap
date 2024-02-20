@@ -26,7 +26,6 @@ M.openNewRoot = function (path)
     api.tree.open({
       path=path,
     })
-    api.tree.reload();
   end
 
 
@@ -43,7 +42,6 @@ function getCucrrentLine(index)
   local current_buf = vim.api.nvim_win_get_buf(window)
   vim.api.nvim_win_close(window,true)
   vim.api.nvim_buf_delete(current_buf,{force = true})
-  vim.api.nvim_buf_set_option(sub_buf,'modifiable',false)
   M.switchProject(index)
 end
 
@@ -89,10 +87,8 @@ M.displayProjects = function()
 
     for i,project in ipairs(M._stack)do
         --local chooseProjectFunction = ":lua getCurrentLine("..i..") <CR>"
-        vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
         --vim.api.nvim_buf_set_keymap(bufnr,"n",tostring(i),chooseProjectFunction,{noremap = true, silent = true})
         vim.api.nvim_buf_set_lines(bufnr,-1,-1,true,{i.." : "..project["name"]})
-        vim.api.nvim_buf_set_option(bufnr,'modifiable',false)
     end
 
     -- Set keymap to close the floating window on 'q'
