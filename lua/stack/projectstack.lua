@@ -91,7 +91,6 @@ M.displayProjects = function()
         vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
         --vim.api.nvim_buf_set_keymap(bufnr,"n",tostring(i),chooseProjectFunction,{noremap = true, silent = true})
         vim.api.nvim_buf_set_lines(bufnr,-1,-1,true,{i.." : "..project["name"]})
-        vim.api.nvim_buf_set_option(bufnr,'modifiable',false)
     end
 
     -- Set keymap to close the floating window on 'q'
