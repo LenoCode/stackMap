@@ -27,8 +27,8 @@ M.openNewRoot = function (path)
       path=path,
       find_file = true,
     })
-    vim.api.nvim_buf_set_option(vim.api.nvim_get_current_buf(),'modifiable',true);
-    vim.api.nvim_buf_set_option(vim.api.nvim_get_current_buf(),'modifiable',false);
+    -- Simulate pressing the Enter key
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<CR>", true, false, true), "n", true)
   end
 
 
