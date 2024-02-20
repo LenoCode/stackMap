@@ -9,9 +9,10 @@ M.init = function ()
   local file = assert(io.open(storagePath,"r"))
   if file then
     local contents = file:read("*a")
-    local json = require("stack.json")
+    local JSON = require("JSON")
 
-    local projects = json.parse(contents)
+    local projects = JSON:decode(contents);
+
     for line in file:lines()do
       table.insert(M._stack,line)
     end
