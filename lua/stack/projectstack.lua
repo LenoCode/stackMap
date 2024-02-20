@@ -28,6 +28,7 @@ M.openNewRoot = function (path)
       find_file = true,
     })
     vim.api.nvim_buf_set_option(vim.api.nvim_get_current_buf(),'modifiable',true);
+    vim.api.nvim_buf_set_option(vim.api.nvim_get_current_buf(),'modifiable',false);
   end
 
 
