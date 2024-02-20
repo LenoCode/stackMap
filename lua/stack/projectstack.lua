@@ -28,7 +28,7 @@ M.openNewRoot = function (path)
       find_file = true,
     })
     -- Simulate pressing the Enter key
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<CR>", true, false, true), "n", true)
+    vim.api.nvim_input("<CR>")
   end
 
 
