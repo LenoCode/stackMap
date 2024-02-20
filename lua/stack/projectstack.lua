@@ -10,11 +10,10 @@ M.init = function ()
   if file then
     local contents = file:read("*a")
     local JSON = require("JSON")
-
     local projects = JSON:decode(contents);
-
-    for line in file:lines()do
-      table.insert(M._stack,line)
+  
+    for key, value in ipairs(projects) do
+      table.insert(M._stack,value)
     end
   end
 end
@@ -33,7 +32,7 @@ M.openNewRoot = function (path)
 
 --Open choosed project
 M.switchProject = function (index)
-  local path = M._stack[index]
+  local path = M._stack[index]["path"]
   M.openNewRoot(path)
 end
 
@@ -91,7 +90,7 @@ M.displayProjects = function()
         --local chooseProjectFunction = ":lua getCurrentLine("..i..") <CR>"
         vim.api.nvim_buf_set_option(bufnr,'modifiable',true)
         --vim.api.nvim_buf_set_keymap(bufnr,"n",tostring(i),chooseProjectFunction,{noremap = true, silent = true})
-        vim.api.nvim_buf_set_lines(bufnr,-1,-1,true,{i.." : "..project})
+        vim.api.nvim_buf_set_lines(bufnr,-1,-1,true,{i.." : "..project["name"]})
         vim.api.nvim_buf_set_option(bufnr,'modifiable',false)
     end
 
