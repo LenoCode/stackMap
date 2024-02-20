@@ -1,4 +1,3 @@
-
 local M = {}
 --In memory stack for holding projects root
 M._stack = {}
@@ -6,14 +5,12 @@ M._stack = {}
 
 --Read all project stored
 M.init = function ()
-  local json = require("stack.json")
   local storagePath = "/home/leno/.cache/nvim/projectstack.json"
   local file = assert(io.open(storagePath,"r"))
   if file then
     local contents = file:read("*a")
     file:close()
-    local projects = json.decode(contents)
-
+    
     for line in file:lines()do
       table.insert(M._stack,line)
     end
