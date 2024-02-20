@@ -23,7 +23,7 @@ end
 M.openNewRoot = function (path)
     local api = require("nvim-tree.api")
     api.tree.close()
-    api.tree.toggle({
+    api.tree.open({
       path=path,
       find_file = true,
     })
