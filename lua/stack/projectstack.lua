@@ -11,6 +11,7 @@ M.init = function ()
     local contents = file:read("*a")
     local json = require("stack.json")
 
+    local projects = json.parse(contents)
     for line in file:lines()do
       table.insert(M._stack,line)
     end
