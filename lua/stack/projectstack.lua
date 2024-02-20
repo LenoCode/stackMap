@@ -9,8 +9,8 @@ M.init = function ()
   local file = assert(io.open(storagePath,"r"))
   if file then
     local contents = file:read("*a")
-    file:close()
-    
+    local json = require("stack.json")
+
     for line in file:lines()do
       table.insert(M._stack,line)
     end
