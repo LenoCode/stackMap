@@ -25,7 +25,6 @@ M.openNewRoot = function (path)
     api.tree.close()
     api.tree.open({
       path=path,
-      find_file = true,
     })
   end
 
