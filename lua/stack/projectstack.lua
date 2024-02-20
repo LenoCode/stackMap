@@ -1,4 +1,4 @@
-require("json")
+require("stack.json")
 
 local M = {}
 --In memory stack for holding projects root
