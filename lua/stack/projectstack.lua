@@ -22,10 +22,11 @@ end
 -- opening a new root in NvimTreeView
 M.openNewRoot = function (path)
     local api = require("nvim-tree.api")
+    api.tree.close()
     api.tree.open({
       path=path,
-      current_window=true
     })
+    api.tree.reload();
   end
 
 
