@@ -1,3 +1,4 @@
+require("json")
 
 local M = {}
 --In memory stack for holding projects root
@@ -6,7 +7,7 @@ M._stack = {}
 
 --Read all project stored
 M.init = function ()
-  local storagePath = "/home/leno/.cache/nvim/projectstack.txt"
+  local storagePath = "/home/leno/.cache/nvim/projectstack.json"
   local file = assert(io.open(storagePath,"r"))
   if file then
     for line in file:lines()do
