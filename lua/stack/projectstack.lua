@@ -120,6 +120,8 @@ M.displayProjects = function()
 
     local onPressEnterFunction = "<Cmd>lua onPressedEnterEvent("..winid..","..sub_win..","..sub_buf..")<CR>"
     vim.api.nvim_buf_set_keymap(sub_buf,"i","<CR>",onPressEnterFunction,{noremap=true,silent=true})
+    vim.cmd("startinsert")
+    vim.api.nvim_buf_set_option(sub_buf,'modifiable',false)
   end
 
 return M
