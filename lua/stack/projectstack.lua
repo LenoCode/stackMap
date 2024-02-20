@@ -43,6 +43,7 @@ function getCucrrentLine(index)
   local current_buf = vim.api.nvim_win_get_buf(window)
   vim.api.nvim_win_close(window,true)
   vim.api.nvim_buf_delete(current_buf,{force = true})
+  vim.api.nvim_buf_set_option(sub_buf,'modifiable',false)
   M.switchProject(index)
 end
 
@@ -121,7 +122,6 @@ M.displayProjects = function()
     local onPressEnterFunction = "<Cmd>lua onPressedEnterEvent("..winid..","..sub_win..","..sub_buf..")<CR>"
     vim.api.nvim_buf_set_keymap(sub_buf,"i","<CR>",onPressEnterFunction,{noremap=true,silent=true})
     vim.cmd("startinsert")
-    vim.api.nvim_buf_set_option(sub_buf,'modifiable',false)
   end
 
 return M
