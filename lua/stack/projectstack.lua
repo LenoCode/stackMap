@@ -1,4 +1,3 @@
-local json = require("stack.json")
 
 local M = {}
 --In memory stack for holding projects root
@@ -7,6 +6,7 @@ M._stack = {}
 
 --Read all project stored
 M.init = function ()
+  local json = require("stack.json")
   local storagePath = "/home/leno/.cache/nvim/projectstack.json"
   local file = assert(io.open(storagePath,"r"))
   if file then
