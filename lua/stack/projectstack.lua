@@ -11,7 +11,7 @@ M.init = function ()
     local contents = file:read("*a")
     local JSON = require("JSON")
     local projects = JSON:decode(contents);
-  
+
     for key, value in ipairs(projects) do
       table.insert(M._stack,value)
     end
@@ -120,7 +120,6 @@ M.displayProjects = function()
 
     local onPressEnterFunction = "<Cmd>lua onPressedEnterEvent("..winid..","..sub_win..","..sub_buf..")<CR>"
     vim.api.nvim_buf_set_keymap(sub_buf,"i","<CR>",onPressEnterFunction,{noremap=true,silent=true})
-    vim.cmd("startinsert")
   end
 
 return M
