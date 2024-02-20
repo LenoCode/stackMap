@@ -22,13 +22,10 @@ end
 -- opening a new root in NvimTreeView
 M.openNewRoot = function (path)
     local api = require("nvim-tree.api")
-    api.tree.close()
     api.tree.toggle({
       path=path,
       find_file = true,
     })
-    -- Simulate pressing the Enter key
-    vim.api.nvim_input("<CR>")
   end
 
 
